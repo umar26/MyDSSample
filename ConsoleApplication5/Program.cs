@@ -13,7 +13,7 @@ namespace ConsoleApplication5
             LinkList list = new LinkList();
             list.PrintAllNodes();
             Console.WriteLine();
-            //list.AddAtLast("value1");
+            list.AddAtLast("value1");
             list.AddAtLast("value2");
             list.AddAtStart("start1");
             
