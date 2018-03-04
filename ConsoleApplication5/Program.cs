@@ -13,9 +13,9 @@ namespace ConsoleApplication5
             LinkList list = new LinkList();
             list.PrintAllNodes();
             Console.WriteLine();
-            //list.AddAtLast("value1");
+            list.AddAtLast("value1");
             list.AddAtLast("value2");
-            list.AddAtStart("start1");
+           // list.AddAtStart("start1");
             
             list.AddAtStart("start2");
             list.PrintAllNodes();
@@ -103,8 +103,6 @@ namespace ConsoleApplication5
            
         }
 
-
-
         public void PrintAllNodes()
         {
             Console.Write("head->");
@@ -118,6 +116,41 @@ namespace ConsoleApplication5
             Console.Write("Null ");
             Console.WriteLine("count=" +Count);
             Console.WriteLine();
+        }
+
+        public LinkList SortMerge(LinkList a, LinkList b)
+        {
+            LinkList f = new LinkList();
+            int firstListLength = a.Count;
+            int secondListLength = b.Count;
+            int j=0;
+            int k = 0;
+            a.Current.Next = a.Head.Next;
+            b.Current.Next = b.Head.Next;
+            while (firstListLength>j && secondListLength>k)
+            {
+               if((int)a.Current.Next.Value<=(int)b.Current.Next.Value)
+                {
+                    f.AddAtLast((int)a.Current.Next.Value);
+                    j++;
+                    a.Current.Next = Current.Next;
+                }
+               else
+                {
+                    f.AddAtLast((int)b.Current.Next.Value);
+                    k++;
+                    b.Current.Next = Current.Next;
+                }
+            }
+            if(firstListLength==j)
+            {
+                f.Current.Next = b.Current.Next;
+            }
+            else if(secondListLength==k)
+            {
+                f.Current.Next = a.Current.Next;
+            }
+            return f;
         }
     }
 
